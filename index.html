@@ -485,23 +485,6 @@ function startGoogleLogin() {
     document.getElementById('loginError').textContent='Configure o Client ID primeiro.';
     return;
   }
-  if(location.protocol === 'file:'){
-    const n = document.getElementById('configNotice');
-    n.style.display='block';
-    n.innerHTML=`<strong>⚠️ Não é possível abrir via HD (file://)</strong>
-O Google OAuth exige que o arquivo rode num servidor local. Escolha uma das opções:<br><br>
-<strong>Opção 1 — Python (mais fácil):</strong><br>
-Abra o Terminal/CMD na pasta do arquivo e execute:<br>
-<code>python -m http.server 8080</code><br>
-Depois acesse: <a href="http://localhost:8080" target="_blank" style="color:#1D9E75">http://localhost:8080</a><br><br>
-<strong>Opção 2 — VS Code:</strong><br>
-Instale a extensão <em>Live Server</em>, clique com botão direito no arquivo → <em>Open with Live Server</em>.<br><br>
-<strong>Opção 3 — Node.js:</strong><br>
-<code>npx serve .</code> e acesse <a href="http://localhost:3000" target="_blank" style="color:#1D9E75">http://localhost:3000</a><br><br>
-Também certifique-se de que <code>http://localhost:8080</code> (ou a porta que usar) está cadastrado em <strong>Origens JavaScript autorizadas</strong> no Google Cloud Console.`;
-    document.getElementById('loginError').textContent='Abra via servidor local — veja as instruções acima.';
-    return;
-  }
   document.getElementById('loginError').textContent='';
   document.getElementById('loginStatus').textContent='Abrindo login Google…';
   document.getElementById('btnGoogleLogin').disabled=true;
